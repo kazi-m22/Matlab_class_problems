@@ -24,12 +24,13 @@ b = B'
 c = inv(A)*b
 l = length(c);
 ym = [];
-for i = 1:length(y)
-    temp = x(i)
+xm = 0:.001:5
+for i = 1:length(xm)
+    temp = xm(i)
     for j = 1:l
         X(j) = temp^(j-1);
     end
     ym(i) = c'*X';
 end
 
-plot(x,y,'o', x,ym,'*')
+plot(x,y,'o', xm,ym)
