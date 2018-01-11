@@ -9,7 +9,7 @@ x_low = -1;
 y_up = f(x_up);
 y_low = f(x_low);
 count  = 0;
-r = []
+r = [];
 
     while (x_up-x_low >.001)
         x_m = (x_up + x_low)/2;
@@ -21,17 +21,19 @@ r = []
             y_up = f(x_up);
             y_low = f(x_low);
             
-         if (ym*y_low <0) && (ym*y_up < 0)
-                x_m2 = x_m;
-                bisec(x_m2, x_low)
-                bisec(x_up, x_m)
+        
                  
-        elseif ym*y_low >0
+        if ym*y_low >0
                 x_low = x_m;  
-            else 
+        elseif ym*y_low >0
                 x_up = x_m;
+        elseif (ym*y_low <0) && (ym*y_up < 0)
+                x_m2 = x_m;
+                r = [r bisec(x_m2, x_low)];
+                r = [r bisec(x_up, x_m)];
+                break;
             end
         end
     end
-
+r
 
