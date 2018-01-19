@@ -3,31 +3,37 @@ clear all
 
 f = inline('x^2-3');
 
-xup = 2;
-xlow = 1;
+x_up = 12;
+x_low = 1;
 
-yup = f(xup);
-ylow = f(xlow);
+y_up = f(x_up);
+y_low = f(x_low);
 count  = 0;
-if (yup*ylow > 0)
-    disp('root is not in interval');
-else
-    while (xup-xlow >.001)
-        xm = (xup + xlow)/2;
-        ym = f(xm);
-        count = count + 1
+r = [];
+
+    while (x_up-x_low >.001)
+        x_m = (x_up + x_low)/2;
+        ym = f(x_m);
+        
         if ym == 0
             break;
         else
-            yup = f(xup);
-            ylow = f(xlow);
-            if ym*ylow >0
-                xlow = xm;
-            else 
-                xup = xm;
+            y_up = f(x_up);
+            y_low = f(x_low);
+            
+        
+                 
+        if ym*y_low >0
+                x_low = x_m;  
+        elseif ym*y_low >0
+                x_up = x_m;
+        elseif (ym*y_low <0) && (ym*y_up < 0)
+                x_m2 = x_m;
+                r = [r bisec(x_m2, x_low)];
+                r = [r bisec(x_up, x_m)];
+                break;
             end
         end
     end
-end
+r
 
-xm

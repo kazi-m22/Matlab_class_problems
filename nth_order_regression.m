@@ -1,9 +1,10 @@
+
 clc
 clear all;
-x = [0:5];
-y=[2.1 7.7 13.6 27.2 40.9 61.1];
+x = [-4:5];
+y=[.4 -3.4 .4 .4 -.8 .4 2.56 .4 -6.8 .4];
 
-n = 2;
+n = 6;
 
 
 for i = 1:n+1
@@ -24,7 +25,7 @@ b = B'
 c = inv(A)*b
 l = length(c);
 ym = [];
-xm = 0:.001:5
+xm = -4:.001:5
 for i = 1:length(xm)
     temp = xm(i)
     for j = 1:l
@@ -34,3 +35,4 @@ for i = 1:length(xm)
 end
 
 plot(x,y,'o', xm,ym)
+

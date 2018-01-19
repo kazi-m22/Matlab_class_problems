@@ -2,11 +2,14 @@ function [ n ] = bisec( xup, xlow )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 n = [];
-f = inline('x^3-3*x');
+f = inline('cos(x)');
 yup = f(xup);
 ylow = f(xlow);
 count  = 0;
-
+t = [];
+if yup*ylow >0
+    t = nan;
+else 
     while (xup-xlow >.001)
         xm = (xup + xlow)/2;
         ym = f(xm);
@@ -22,6 +25,7 @@ count  = 0;
             end
         end
     end
-
-n = xm;
+    t = xm;
+end
+n = t;
 
