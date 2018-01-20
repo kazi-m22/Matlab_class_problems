@@ -7,4 +7,4 @@ for i = -10:.5:10
     end
 end
 
-r(isnan(r)) = []
+r
