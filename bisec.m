@@ -8,7 +8,7 @@ ylow = f(xlow);
 count  = 0;
 t = [];
 if yup*ylow >0
-    t = nan;
+  
 else 
     while (xup-xlow >.001)
         xm = (xup + xlow)/2;
